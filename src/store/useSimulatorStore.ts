@@ -6,6 +6,9 @@ import { selectionSort } from '../core/algorithms/selectionSort';
 import { insertionSort } from '../core/algorithms/insertionSort';
 import { quickSort } from '../core/algorithms/quickSort';
 import { heapSort } from '../core/algorithms/heapSort';
+import { shellSort } from '../core/algorithms/shellSort';
+import { cocktailShakerSort } from '../core/algorithms/cocktailShakerSort';
+import { combSort } from '../core/algorithms/combSort';
 
 export const algorithms: Record<string, AlgorithmDefinition> = {
   'bubble-sort': bubbleSort,
@@ -14,6 +17,9 @@ export const algorithms: Record<string, AlgorithmDefinition> = {
   'insertion-sort': insertionSort,
   'quick-sort': quickSort,
   'heap-sort': heapSort,
+  'shell-sort': shellSort,
+  'cocktail-shaker-sort': cocktailShakerSort,
+  'comb-sort': combSort,
 };
 
 const generateArray = (size: number) => {
