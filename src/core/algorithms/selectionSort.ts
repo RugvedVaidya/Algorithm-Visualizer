@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function selectionSort(arr) {
   let n = arr.length;
@@ -21,16 +21,18 @@ const code = `function selectionSort(arr) {
 export const selectionSort: AlgorithmDefinition = {
   id: 'selection-sort',
   name: 'Selection Sort',
+  type: 'array',
   description: 'Sorts an array by repeatedly finding the minimum element from the unsorted part and putting it at the beginning.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

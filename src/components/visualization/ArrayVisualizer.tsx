@@ -1,20 +1,21 @@
 import { motion } from 'framer-motion';
 import { useSimulatorStore } from '../../store/useSimulatorStore';
+import type { ArrayTraceStep } from '../../core/types';
 
 export const ArrayVisualizer = () => {
   const { trace, currentStepIndex } = useSimulatorStore();
   const currentStep = trace[currentStepIndex];
 
-  if (!currentStep) return null;
+  if (!currentStep || currentStep.type !== 'array') return null;
 
-  const { array, comparing, swapping, sorted } = currentStep;
+  const { array, comparing, swapping, sorted } = currentStep as ArrayTraceStep;
 
-  const maxVal = Math.max(...array.map(item => item.value), 1);
+  const maxVal = Math.max(...array.map((item: any) => item.value), 1);
 
   return (
     <div className="array-visualizer">
       <div className="bars-container">
-        {array.map((item, index) => {
+        {array.map((item: any, index: number) => {
           let stateClass = 'default';
           if (sorted.includes(index)) stateClass = 'sorted';
           else if (swapping.includes(index)) stateClass = 'swapping';

@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function mergeSort(arr, l, r) {
   if (l >= r) return;
@@ -33,15 +33,17 @@ function inPlaceMerge(arr, start, mid, end) {
 export const mergeSort: AlgorithmDefinition = {
   id: 'merge-sort',
   name: 'Merge Sort',
+  type: 'array',
   description: 'An in-place variation of Merge Sort to correctly visualize element movements without duplicating references.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,
@@ -108,6 +110,7 @@ export const mergeSort: AlgorithmDefinition = {
     
     // Mark all as sorted at the end
     trace.push({
+        type: 'array',
       array: [...arr],
       comparing: [],
       swapping: [],

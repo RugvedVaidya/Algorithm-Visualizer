@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function insertionSort(arr) {
   let n = arr.length;
@@ -17,16 +17,18 @@ const code = `function insertionSort(arr) {
 export const insertionSort: AlgorithmDefinition = {
   id: 'insertion-sort',
   name: 'Insertion Sort',
+  type: 'array',
   description: 'Builds the final sorted array one item at a time by repeatedly taking the next element and swapping it into its correct position.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [0];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

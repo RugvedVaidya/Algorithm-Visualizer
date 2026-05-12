@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function cocktailShakerSort(arr) {
   let is_swapped = true;
@@ -35,16 +35,18 @@ const code = `function cocktailShakerSort(arr) {
 export const cocktailShakerSort: AlgorithmDefinition = {
   id: 'cocktail-shaker-sort',
   name: 'Cocktail Shaker Sort',
+  type: 'array',
   description: 'A bidirectional bubble sort that traverses the array in both directions alternatively.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

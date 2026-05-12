@@ -1,6 +1,7 @@
 import { PlaybackControls } from '../controls/PlaybackControls';
 import { CodeViewer } from '../editor/CodeViewer';
 import { ArrayVisualizer } from '../visualization/ArrayVisualizer';
+import { GraphVisualizer } from '../visualization/GraphVisualizer';
 import { useSimulatorStore, algorithms } from '../../store/useSimulatorStore';
 
 export const AppLayout = () => {
@@ -22,7 +23,7 @@ export const AppLayout = () => {
 
       <main className="app-main">
         <div className="visualization-pane">
-          <ArrayVisualizer />
+          {algoInfo.type === 'array' ? <ArrayVisualizer /> : <GraphVisualizer />}
           <PlaybackControls />
         </div>
         <div className="sidebar-pane">

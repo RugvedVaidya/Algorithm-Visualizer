@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function bubbleSort(arr) {
   let n = arr.length;
@@ -17,16 +17,18 @@ const code = `function bubbleSort(arr) {
 export const bubbleSort: AlgorithmDefinition = {
   id: 'bubble-sort',
   name: 'Bubble Sort',
+  type: 'array',
   description: 'A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     let sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

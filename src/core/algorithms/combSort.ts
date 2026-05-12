@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function combSort(arr) {
   let n = arr.length;
@@ -25,16 +25,18 @@ const code = `function combSort(arr) {
 export const combSort: AlgorithmDefinition = {
   id: 'comb-sort',
   name: 'Comb Sort',
+  type: 'array',
   description: 'An improvement over Bubble Sort that uses a gap sequence to eliminate turtles (small values near the end).',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

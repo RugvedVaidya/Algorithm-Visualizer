@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function quickSort(arr, low, high) {
   if (low < high) {
@@ -30,16 +30,18 @@ function swap(arr, i, j) {
 export const quickSort: AlgorithmDefinition = {
   id: 'quick-sort',
   name: 'Quick Sort',
+  type: 'array',
   description: 'A divide-and-conquer algorithm that picks a pivot and partitions the array around the pivot.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

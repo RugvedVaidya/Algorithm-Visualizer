@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function shellSort(arr) {
   let n = arr.length;
@@ -19,16 +19,18 @@ const code = `function shellSort(arr) {
 export const shellSort: AlgorithmDefinition = {
   id: 'shell-sort',
   name: 'Shell Sort',
+  type: 'array',
   description: 'An optimization of insertion sort that allows the exchange of items that are far apart.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,

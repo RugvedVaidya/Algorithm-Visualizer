@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, ArrayElement, TraceStep } from '../types';
+import type { AlgorithmDefinition, ArrayElement, ArrayTraceStep } from '../types';
 
 const code = `function heapSort(arr) {
   let n = arr.length;
@@ -31,16 +31,18 @@ function heapify(arr, n, i) {
 export const heapSort: AlgorithmDefinition = {
   id: 'heap-sort',
   name: 'Heap Sort',
+  type: 'array',
   description: 'A comparison-based sorting technique based on Binary Heap data structure.',
   code,
   execute: (initialArray: ArrayElement[]) => {
-    const trace: TraceStep[] = [];
+    const trace: ArrayTraceStep[] = [];
     const arr = [...initialArray];
     const n = arr.length;
     const sortedIndices: number[] = [];
 
     const pushState = (comparing: number[], swapping: number[], activeLine: number) => {
       trace.push({
+        type: 'array',
         array: [...arr],
         comparing,
         swapping,
